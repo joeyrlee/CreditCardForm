@@ -1,28 +1,48 @@
+/*
+ *
+ * Drop-and-go Credit Card Form React component
+ *
+ * -feature backlog:
+ *  -variable heading levels (i.e. heading level may not always be h1)
+ *  -image optimization
+ *
+**/
+
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+import UIInputField from './UIInputField';
+
+class CreditCardForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <form novalidate>
+        <fieldset>
+          <legend>
+            <h1>Enter your credit card information</h1>
+          </legend>
+          <UIInputField />
+          <UIInputField />
+          <UIInputField />
+          <div class="columns-6">
+            <UIInputField />
+          </div>
+          <div class="columns-6">
+            <UIInputField />
+          </div>
+          <img src="http://www.fa.ufl.edu/wp-content/uploads/cardops/Credit-Card-Logos.jpg" alt="visa, master card, discover network, american express" />
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
     );
   }
 }
 
-export default App;
+export default CreditCardForm;
