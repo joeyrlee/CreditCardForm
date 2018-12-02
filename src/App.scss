@@ -1,0 +1,104 @@
+$lightGray: #EFEFEF;
+$mediumGray: #6D6D6D;
+$darkGray: #9E9E9E;
+$purple: #BEC0FA;
+$purpleText: #525252; //to meet WCAG AA >=4.5:1 constrast requirements, this differs from design
+
+@mixin border {
+  border: 1px solid $darkGray;
+  border-radius: 4px;
+}
+
+/* CreditCardForm component styles */
+.credit-card-form {
+  /* Form Styles */
+  @include border();
+  background-color: $lightGray;
+
+  /* Style Resets */
+  fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  /* Legend Styles */
+  legend {
+    //contract font to fit on one line for for 320px screen width
+    font: .85rem arial;
+    @media screen and (min-width: 375px) {
+      //return font-width to normal
+      font-size: 1rem;
+    }
+    font-weight: bold;
+
+    padding: 0;
+    text-align: center;
+  }
+
+  /* Element Alignment */
+  fieldset {
+    text-align: center;
+  }
+  input, button {
+    width: 95%
+  }
+  img {
+    width: 90%;
+  }
+
+  /* Element Spacing */
+  margin: 1rem;
+  padding: 1rem 2rem;
+  legend, div.input, img {
+    margin-bottom: 1rem;
+  }
+
+  /* Inner Form Element Styles */
+  input, button {
+    @include border();
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    text-align: center;
+    color: $mediumGray;
+  }
+  button {
+    background-color: $purple;
+    border-width: 2px;
+  }
+}
+
+
+/* CRA Default Styles
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}*/

@@ -3,14 +3,13 @@
  * Drop-and-go Credit Card Form React component
  *
  * -feature backlog:
- *  -variable heading levels (i.e. heading level may not always be h1)
  *  -image optimization
  *
 **/
 
 import React, { Component } from 'react';
 import UniversalCardValidator from './CardValidators/CardValidators';
-import './App.css';
+import './App.scss';
 
 import UIInputField from './UIInputField';
 
@@ -22,11 +21,9 @@ class CreditCardForm extends Component {
 
   render() {
     return (
-      <form noValidate>
+      <form className="credit-card-form" noValidate>
         <fieldset>
-          <legend>
-            <h1>Enter your credit card information</h1>
-          </legend>
+          <legend>Enter your credit card information</legend>
           <UIInputField />
           <UIInputField />
           <UIInputField />
