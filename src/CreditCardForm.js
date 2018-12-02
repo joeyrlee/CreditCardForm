@@ -9,8 +9,7 @@
 **/
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import logo from './logo.svg';
+import UniversalCardValidator from './CardValidators/CardValidators';
 import './App.css';
 
 import UIInputField from './UIInputField';
@@ -23,7 +22,7 @@ class CreditCardForm extends Component {
 
   render() {
     return (
-      <form novalidate>
+      <form noValidate>
         <fieldset>
           <legend>
             <h1>Enter your credit card information</h1>
@@ -31,10 +30,10 @@ class CreditCardForm extends Component {
           <UIInputField />
           <UIInputField />
           <UIInputField />
-          <div class="columns-6">
+          <div className="columns-6">
             <UIInputField />
           </div>
-          <div class="columns-6">
+          <div className="columns-6">
             <UIInputField />
           </div>
           <img src="http://www.fa.ufl.edu/wp-content/uploads/cardops/Credit-Card-Logos.jpg" alt="visa, master card, discover network, american express" />
