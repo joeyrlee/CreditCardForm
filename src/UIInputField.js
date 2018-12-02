@@ -49,13 +49,14 @@ UIInputField.defaultProps = {
 }
 
 UIInputField.propTypes = {
+  name: PropTypes.string.isRequired,
   type: PropTypes.string,
-  placeholder: PropTypes.string,
+  placeholder: PropTypes.string.isRequired,
   layout: PropTypes.string,
   errorMessage: PropTypes.string,
   minlength: PropTypes.string,
   maxlength: PropTypes.string,
-  handleChange: PropTypes.func
+  handleChange: PropTypes.func.isRequired
 }
 
 export default UIInputField;

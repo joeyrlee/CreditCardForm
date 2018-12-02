@@ -4,7 +4,7 @@ import './index.scss';
 import CreditCardForm from './CreditCardForm';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<CreditCardForm />, document.getElementById('root'));
+ReactDOM.render(<CreditCardForm handleFormSubmission={()=>alert('form successfully submitted!')} />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

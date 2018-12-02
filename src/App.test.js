@@ -1,3 +1,10 @@
+/* Missing Tests:
+ * -creditCardFormValidator
+ * -monthValidator
+ * -yearValidator
+ *
+**/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CreditCardForm from './CreditCardForm';
@@ -6,7 +13,7 @@ import {
   VisaValidator, 
   AmExValidator, 
   UniversalCardValidator
-} from './CardValidators/CardValidators';
+} from './ValidationHelpers/CardValidators';
 
 /* VisaValidator tests */
 it('should only accept string card type inputs', () => {
@@ -57,6 +64,16 @@ it('should return Visa number/cvv2 inputs as `Visa` strings', () => {
 it('should return AmEx number/cvv2 inputs as `AmEx` strings', () => {  
   expect(UniversalCardValidator('340123412341234', '1234')).toEqual('AmEx');
 });
+
+/* creditCardFormValidator test */
+// it('should return an object of field-name:error-message pairs when there are any validation errors', () => {
+//   expect().equals({
+
+//   });
+// })
+// it('should return null when there are no validation errors', () => {
+//   expect().toEqual(null);
+// })
 
 /* Generic component-rendering smoke tests */
 it('renders CreditCardForm without crashing', () => {

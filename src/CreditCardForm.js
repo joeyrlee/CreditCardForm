@@ -10,7 +10,7 @@
 **/
 
 import React, { Component } from 'react';
-import UniversalCardValidator from './CardValidators/CardValidators';
+import { creditCardFormValidator } from './ValidationHelpers/creditCardFormValidator';
 import PropTypes from 'prop-types';
 import './App.scss';
 
@@ -26,8 +26,20 @@ class CreditCardForm extends Component {
       [Constants.FIELD_CC_NUMBER]: props[Constants.FIELD_CC_NUMBER],
       [Constants.FIELD_CVV2]: props[Constants.FIELD_CVV2],
       [Constants.FIELD_EXP_DATE_MONTH]: props[Constants.FIELD_EXP_DATE_MONTH],
-      [Constants.FIELD_EXP_DATE_YEAR]: props[Constants.FIELD_EXP_DATE_YEAR]
+      [Constants.FIELD_EXP_DATE_YEAR]: props[Constants.FIELD_EXP_DATE_YEAR],
+      errors: {}
     };
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const validationErrors = creditCardFormValidator(this.state);
+    console.log("@@@ 2 validationErrors:",validationErrors)
+    if (validationErrors) {
+      this.setState({errors: validationErrors});
+    } else {
+      this.props.handleFormSubmission(this.state);
+    }
   }
 
   handleChange = (name, value) => {
@@ -45,7 +57,8 @@ class CreditCardForm extends Component {
             handleChange={this.handleChange}
             name={Constants.FIELD_NAME}
             placeholder="Name"
-            autocomplete="name" />
+            autocomplete="name"
+            errorMessage={this.state.errors[Constants.FIELD_NAME]} />
           <UIInputField
             value={this.state[Constants.FIELD_CC_NUMBER]}
             handleChange={this.handleChange}
@@ -53,7 +66,8 @@ class CreditCardForm extends Component {
             placeholder="Card Number"
             autocomplete="cc-number"
             minlength="15"
-            maxlength="16" />
+            maxlength="16"
+            errorMessage={this.state.errors[Constants.FIELD_CC_NUMBER]} />
           <UIInputField
             value={this.state[Constants.FIELD_CVV2]}
             handleChange={this.handleChange}
@@ -61,7 +75,8 @@ class CreditCardForm extends Component {
             placeholder="CVV2"
             autocomplete="cc-csc"
             minLength="3"
-            maxlength="4" />
+            maxlength="4"
+            errorMessage={this.state.errors[Constants.FIELD_CVV2]} />
           <div className="split-input-container">
             <UIInputField
               value={this.state[Constants.FIELD_EXP_DATE_MONTH]}
@@ -71,7 +86,8 @@ class CreditCardForm extends Component {
               autocomplete="cc-exp-month"
               layout="inline-block"
               minLength="2"
-              maxlength="2" />
+              maxlength="2"
+              errorMessage={this.state.errors[Constants.FIELD_EXP_DATE_MONTH]} />
             <UIInputField
               value={this.state[Constants.FIELD_EXP_DATE_YEAR]}
               handleChange={this.handleChange}
@@ -80,10 +96,11 @@ class CreditCardForm extends Component {
               autocomplete="cc-exp-year"
               layout="inline-block"
               minlength="4"
-              maxlength="4" />
+              maxlength="4"
+              errorMessage={this.state.errors[Constants.FIELD_EXP_DATE_YEAR]} />
           </div>
           <img src="http://www.fa.ufl.edu/wp-content/uploads/cardops/Credit-Card-Logos.jpg" alt="visa, master card, discover network, american express" />
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={this.handleSubmit}>Submit</button>
         </fieldset>
       </form>
     );
@@ -116,7 +133,8 @@ CreditCardForm.propTypes = {
   [Constants.FIELD_CC_NUMBER]: PropTypes.string,
   [Constants.FIELD_CVV2]: PropTypes.string,
   [Constants.FIELD_EXP_DATE_MONTH]: PropTypes.string,
-  [Constants.FIELD_EXP_DATE_YEAR]: PropTypes.string
+  [Constants.FIELD_EXP_DATE_YEAR]: PropTypes.string,
+  handleFormSubmission: PropTypes.func.isRequired
 }
 
 export default CreditCardForm;
