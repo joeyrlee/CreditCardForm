@@ -6,10 +6,18 @@ class UIInputField extends Component {
     return (
       <div className={`input-container ${this.props.layout}`}>
         <input 
+          id={this.props.name}
+          class={this.props.errorMessage ? "error" : null}
           type={this.props.type}
           placeholder={this.props.placeholder}
-          aria-label={this.props.placeholder} />
-        <span role="alert"></span>
+          aria-label={this.props.placeholder}
+          aria-describedby={this.props.name ? this.props.name + "-error" : null} />
+        <div 
+          id={this.props.name + "-error"}
+          role="alert"
+        >
+          {this.props.errorMessage}
+        </div>
       </div>
     );
   }
@@ -18,12 +26,15 @@ class UIInputField extends Component {
 UIInputField.defaultProps = {
   type: "text",
   placeholder: null,
-  layout: "block"
+  layout: "block",
+  errorMessage: ""
 }
 
 UIInputField.propTypes = {
   type: PropTypes.string,
-  placeholder: PropTypes.string
+  placeholder: PropTypes.string,
+  layout: PropTypes.string,
+  errorMessage: PropTypes.string
 }
 
 export default UIInputField;

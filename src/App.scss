@@ -55,6 +55,16 @@ $errorRed: #da0000; //slightly-darkened red to meet WCAG AA >=4.5:1 constrast re
     margin-bottom: 1rem;
   }
 
+  /* Split inputs styling */
+  .inline-block {
+    display: inline-block;
+    width: 46%;
+    margin-right: 8%;
+    input {
+      width: 100%;
+    }
+  }
+
   /* Inner Form Element Styles */
   input, button {
     @include border();
@@ -65,17 +75,13 @@ $errorRed: #da0000; //slightly-darkened red to meet WCAG AA >=4.5:1 constrast re
   input {
     color: $mediumGray;
   }
-  .split-input-container {
+  .input-container.block div {
     padding: 0 2.5%;
     text-align: left;
   }
-  .inline-block {
-    display: inline-block;
-    width: 46%;
-    margin-right: 8%;
-    input {
-      width: 100%;
-    }
+  .split-input-container {
+    padding: 0 2.5%;
+    text-align: left;
   }
   .inline-block + .inline-block {
     margin-right: 0;
@@ -83,6 +89,14 @@ $errorRed: #da0000; //slightly-darkened red to meet WCAG AA >=4.5:1 constrast re
   button {
     background-color: $purple;
     border-width: 2px;
+  }
+
+  /* Validation Error Styles */
+  input.error {
+    border-color: $errorRed;
+  }
+  div[role="alert"] {
+    color: $errorRed;
   }
 }
 
