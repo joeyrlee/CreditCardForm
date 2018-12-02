@@ -3,6 +3,7 @@ $mediumGray: #6D6D6D;
 $darkGray: #9E9E9E;
 $purple: #BEC0FA;
 $purpleText: #525252; //to meet WCAG AA >=4.5:1 constrast requirements, this differs from design
+$errorRed: #da0000; //slightly-darkened red to meet WCAG AA >=4.5:1 constrast requirements with $lightGray background
 
 @mixin border {
   border: 1px solid $darkGray;
@@ -50,7 +51,7 @@ $purpleText: #525252; //to meet WCAG AA >=4.5:1 constrast requirements, this dif
   /* Element Spacing */
   margin: 1rem;
   padding: 1rem 2rem;
-  legend, div.input, img {
+  legend, div.input-container, img {
     margin-bottom: 1rem;
   }
 
@@ -63,6 +64,21 @@ $purpleText: #525252; //to meet WCAG AA >=4.5:1 constrast requirements, this dif
   }
   input {
     color: $mediumGray;
+  }
+  .split-input-container {
+    padding: 0 2.5%;
+    text-align: left;
+  }
+  .inline-block {
+    display: inline-block;
+    width: 46%;
+    margin-right: 8%;
+    input {
+      width: 100%;
+    }
+  }
+  .inline-block + .inline-block {
+    margin-right: 0;
   }
   button {
     background-color: $purple;

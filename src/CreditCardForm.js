@@ -3,7 +3,9 @@
  * Drop-and-go Credit Card Form React component
  *
  * -feature backlog:
+ *  -dynamic validation indicator adjacent to form inputs
  *  -image optimization
+ *  -re-locate text to i18n abstraction layer 
  *
 **/
 
@@ -24,14 +26,19 @@ class CreditCardForm extends Component {
       <form className="credit-card-form" noValidate>
         <fieldset>
           <legend>Enter your credit card information</legend>
-          <UIInputField />
-          <UIInputField />
-          <UIInputField />
-          <div className="columns-6">
-            <UIInputField />
-          </div>
-          <div className="columns-6">
-            <UIInputField />
+          <UIInputField
+            placeholder="Name" />
+          <UIInputField
+            placeholder="Card Number" />
+          <UIInputField
+            placeholder="CVV2" />
+          <div class="split-input-container">
+            <UIInputField
+              placeholder="Exp. Month"
+              layout="inline-block" />
+            <UIInputField
+              placeholder="Exp. Year"
+              layout="inline-block" />
           </div>
           <img src="http://www.fa.ufl.edu/wp-content/uploads/cardops/Credit-Card-Logos.jpg" alt="visa, master card, discover network, american express" />
           <button type="submit">Submit</button>
